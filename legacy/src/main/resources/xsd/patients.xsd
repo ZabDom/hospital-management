@@ -1,0 +1,97 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="http://legacy.com/patients"
+            targetNamespace="http://legacy.com/patients"
+            elementFormDefault="qualified"
+            xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+            xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+            jaxb:extensionBindingPrefixes="xjc"
+            jaxb:version="1.0">
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <jaxb:globalBindings generateIsSetMethod="true">
+                <xjc:serializable uid="42"/>
+            </jaxb:globalBindings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+    <xsd:element name="addPatientRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="patient" type="tns:Patient"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="addPatientResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="responseMessage" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="deletePatientRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="id" type="xsd:int"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="deletePatientResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="responseMessage" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="getPatientRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="id" type="xsd:int"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="getPatientResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="patient" type="tns:Patient"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="updatePatientRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="patient" type="tns:Patient"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="updatePatientResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="responseMessage" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="Patient">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:int">
+                <xsd:unique name="uniqueId">
+                    <xsd:selector xpath="id"/>
+                    <xsd:field xpath="@id"/>
+                </xsd:unique>
+            </xsd:element>
+            <xsd:element name="name" type="xsd:string"/>
+            <xsd:element name="dateOfBirth" type="xsd:string"/>
+            <xsd:element name="dateOfArrival" type="xsd:string"/>
+            <xsd:element name="dateOfLeave" type="xsd:string"/>
+            <xsd:element name="currentStatus" type="xsd:int"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

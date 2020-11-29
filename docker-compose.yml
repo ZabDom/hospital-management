@@ -1,0 +1,62 @@
+version: '2.4'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3306:3306'
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+      timeout: 20s
+      retries: 10
+  memcached:
+    image: memcached:1.6-alpine
+    container_name: memcached
+    restart: unless-stopped
+    ports:
+      - '11211:11211'
+  activemq:
+    image: rmohr/activemq:5.15.9-alpine
+    container_name: activemq
+    ports:
+      - '61616:61616'
+  legacy:
+    restart: unless-stopped
+    container_name: legacy
+    build:
+      context: legacy
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - 8081:8080
+  fancy:
+    restart: unless-stopped
+    container_name: fancy
+    build:
+      context: fancy
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - 8082:8080
+  morgue:
+    restart: unless-stopped
+    container_name: morgue
+    build:
+      context: morgue
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - 8083:8080

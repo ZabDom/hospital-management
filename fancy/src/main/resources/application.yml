@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: fancy
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: "jdbc:mysql://db:3306/db?autoreconnect=true"
+    username: "user"
+    password: "password"
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  jms:
+    broker: "tcp://activemq:61616"
+    queue: "message_queue"
+server:
+  port: 8080

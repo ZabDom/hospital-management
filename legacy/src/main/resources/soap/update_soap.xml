@@ -1,0 +1,16 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:patient="http://legacy.com/patients">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <patient:updatePatientRequest>
+            <patient:patient>
+                <patient:id>0</patient:id>
+                <patient:name>name</patient:name>
+                <patient:dateOfBirth>yyyy-mm-dd</patient:dateOfBirth>
+                <patient:dateOfArrival>yyyy-mm-dd</patient:dateOfArrival>
+                <patient:dateOfLeave>yyyy-mm-dd</patient:dateOfLeave>
+                <patient:currentStatus>1</patient:currentStatus>
+            </patient:patient>
+        </patient:updatePatientRequest>
+    </soapenv:Body>
+</soapenv:Envelope>

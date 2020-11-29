@@ -1,0 +1,9 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:patient="http://legacy.com/patients">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <patient:getPatientRequest>
+            <patient:id>1</patient:id>
+        </patient:getPatientRequest>
+    </soapenv:Body>
+</soapenv:Envelope>
