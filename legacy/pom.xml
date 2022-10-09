@@ -25,7 +25,7 @@
         <jax2b.source>${project.basedir}/src/main/resources/xsd</jax2b.source>
         <jax2b.output>${project.build.sourceDirectory}</jax2b.output>
         <jaxb2-basics.version>1.11.1</jaxb2-basics.version>
-        <mysql-connector-java.version>5.1.48</mysql-connector-java.version>
+        <mysql-connector-java.version>8.0.28</mysql-connector-java.version>
     </properties>
 
     <dependencies>
